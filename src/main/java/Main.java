@@ -30,12 +30,19 @@ public class Main {
     // Declarative approach ✅
 
     // Filter
-    List<Person> females = people.stream()
-        .filter(person -> person.getGender().equals(Gender.FEMALE))
-        .collect(Collectors.toList());
-
+//    List<Person> females = people.stream()
+//        .filter(person -> person.getGender().equals(Gender.FEMALE))
+//        .collect(Collectors.toList());
+//
 //    females.forEach(System.out::println);
-
+    List<Person> males = people.stream()
+    		.filter(person -> person.getGender().equals(Gender.MALE))
+    		.collect(Collectors.toList());
+    
+    males.forEach(System.out::println);
+    
+    
+    
     // Sort
     List<Person> sorted = people.stream()
         .sorted(Comparator.comparing(Person::getAge).thenComparing(Person::getGender).reversed())
@@ -84,7 +91,7 @@ public class Main {
         .max(Comparator.comparing(Person::getAge))
         .map(Person::getName);
 
-    oldestFemaleAge.ifPresent(System.out::println);
+//    oldestFemaleAge.ifPresent(System.out::println);
   }
 
   private static List<Person> getPeople() {
