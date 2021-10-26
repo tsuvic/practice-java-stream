@@ -3,6 +3,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -30,26 +31,35 @@ public class Main {
     // Declarative approach ✅
 
     // Filter
+    
 //    List<Person> females = people.stream()
 //        .filter(person -> person.getGender().equals(Gender.FEMALE))
 //        .collect(Collectors.toList());
-//
 //    females.forEach(System.out::println);
-    List<Person> males = people.stream()
-    		.filter(person -> person.getGender().equals(Gender.MALE))
+//    
+//    List<Person> males = people.stream()
+//    		.filter(person -> person.getGender().equals(Gender.MALE))
+//    		.collect(Collectors.toList());  
+//    males.forEach(System.out::println);
+    
+    List<Person> females = people.stream()	
+    		.filter(person -> person.getGender().equals(Gender.FEMALE))
     		.collect(Collectors.toList());
-    
-    males.forEach(System.out::println);
-    
+//    females.forEach(System.out::println);
     
     
     // Sort
+    
+//    List<Person> sorted = people.stream()
+//        .sorted(Comparator.comparing(Person::getAge).thenComparing(Person::getGender).reversed())
+//        .collect(Collectors.toList());
     List<Person> sorted = people.stream()
-        .sorted(Comparator.comparing(Person::getAge).thenComparing(Person::getGender).reversed())
-        .collect(Collectors.toList());
-
-//    sorted.forEach(System.out::println);
-
+    		.sorted(Comparator.comparing(Person::getGender).thenComparing(Person::getAge))
+//    		.sorted(Comparator.comparing(Person::getAge).reversed().thenComparing(Person::getGender))
+    		.collect(Collectors.toList());
+    sorted.forEach(System.out::println);
+    
+    
     // All match
     boolean allMatch = people.stream()
         .allMatch(person -> person.getAge() > 8);
