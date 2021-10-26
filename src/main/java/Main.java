@@ -54,7 +54,7 @@ public class Main {
 //        .sorted(Comparator.comparing(Person::getAge).thenComparing(Person::getGender).reversed())
 //        .collect(Collectors.toList());
     List<Person> sorted = people.stream()
-    		.sorted(Comparator.comparing(Person::getGender).thenComparing(Person::getAge))
+    		.sorted(Comparator.comparing(Person::getGender).thenComparing(Person::getAge, Comparator.reverseOrder()))
 //    		.sorted(Comparator.comparing(Person::getAge).reversed().thenComparing(Person::getGender))
     		.collect(Collectors.toList());
     sorted.forEach(System.out::println);
